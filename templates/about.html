@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block head %}
+{{ parent() }}
+<style type="text/css">
+    .important { color: #336699; }
+</style>
+{% endblock %}
+
+{% block content %}
+<p class="important">
+    Author: Hendrik Nigul<br/>
+    Generated at {{ time }}
+</p>
+{% endblock %}
