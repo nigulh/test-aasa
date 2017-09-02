@@ -10,11 +10,14 @@
 
 {% block content %}
 <form action="./apply" method="post">
+    {% if fail is defined %}
+    Something went wrong.<br/>
+    {% endif %}
     {% for item in fields %}
     {{item.title}}:<br>
     <input type="text" name="{{item.name}}" value="{{ item.value }}"><br>
     {{item.message}}<br>
     {% endfor %}
-    <input type="submit" value="Esita"/>
+    <input type="submit" value="Submit"/>
 </form>
 {% endblock %}

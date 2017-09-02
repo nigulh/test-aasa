@@ -16,7 +16,7 @@ class ContractController
     public function init(Request $request, Response $response, $args) {
         $fields = $this->createData();
 
-        $responseData = $this->render('contract-init.html', array("fields" => $fields));
+        $responseData = $this->render('contract.html', array("fields" => $fields));
         $response->getBody()->write($responseData);
 
         return $response;
@@ -24,20 +24,20 @@ class ContractController
 
     public function create(Request $request, Response $response, $args) {
         $fields = $this->createData();
-        $params = $request->getParsedBody();
+        $data = $request->getParsedBody();
 
         foreach($fields as &$field) {
-            $field["value"] = $params[$field["name"]];
+            $field["value"] = $data[$field["name"]];
         }
 
-        $responseData = $this->render('contract-create-fail.html', array("fields" => $fields));
+        $responseData = $this->render('contract.html', array("fields" => $fields, "fail" => true));
         $response->getBody()->write($responseData);
 
         return $response;
     }
 
     protected function render($name, $data) {
-        return $this->container->get('twig')->load($name)->render($data);
+        return $this->container->twig->load($name)->render($data);
     }
 
     protected function createData() {

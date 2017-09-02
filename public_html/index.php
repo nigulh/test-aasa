@@ -1,9 +1,13 @@
 <?php
-require_once 'vendor/autoload.php';
-require_once 'controllers/ContractController.php';
-require_once 'controllers/AboutController.php';
+namespace App;
+use Twig_Loader_Filesystem;
+use Twig_Environment;
 
-$loader = new Twig_Loader_Filesystem('./templates');
+require_once '../vendor/autoload.php';
+require_once '../app/controllers/ContractController.php';
+require_once '../app/controllers/AboutController.php';
+
+$loader = new Twig_Loader_Filesystem('../app/templates');
 $twig = new Twig_Environment($loader);
 $configuration = [
     'settings' => [
