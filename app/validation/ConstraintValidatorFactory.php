@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . "/Constraints/RangeValidator.php";
+
 class ConstraintValidatorFactory
 {
     protected $validators = array();

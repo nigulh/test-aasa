@@ -11,12 +11,17 @@
 {% block content %}
 <form action="./apply" method="post">
     {% if fail is defined %}
-    Something went wrong.<br/>
+        {% if fail == true %}
+            Something went wrong.<br/>
+        {% else %}
+            Success!<br/>
+        {% endif %}
+        <br/>
     {% endif %}
-    {% for item in fields %}
-    {{item.title}}:<br>
-    <input type="text" name="{{item.name}}" value="{{ item.value }}"><br>
-    {{item.message}}<br>
+    {% for key, field in fields %}
+        {{field}}:<br>
+        <input type="text" name="{{key}}" value="{{ attribute(data, key) }}">
+        {{ attribute(messages, key)[0] }}<br/><br/>
     {% endfor %}
     <input type="submit" value="Submit"/>
 </form>

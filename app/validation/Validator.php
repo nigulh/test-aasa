@@ -1,10 +1,13 @@
 <?php
+require_once __DIR__ . "/ConstraintValidatorFactory.php";
+require_once __DIR__ . "/ValidationContext.php";
 
 class Validator {
     protected $fieldConstraints;
 
     public function __construct() {
         $this->validatorFactory = new ConstraintValidatorFactory();
+        $this->fieldConstraints = array();
     }
 
     public function addFieldConstraint(String $fieldName, Constraint $constraint) {
@@ -21,8 +24,9 @@ class Validator {
                 $validator = $this->validatorFactory->getInstance($constraint);
                 $context->SetCurrentFieldName($fieldName);
                 $validator->initialize($context);
-                $validator->validate($value, $constraint);
+                $validator->validate($value->$fieldName, $constraint);
             }
         }
+        return $context->GetFieldViolations();
     }
 }
