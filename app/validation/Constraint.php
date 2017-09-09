@@ -1,4 +1,4 @@
-<?php
+<?php namespace App\Validation;
 
 abstract class Constraint
 {

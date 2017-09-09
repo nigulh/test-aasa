@@ -1,5 +1,7 @@
 <?php
 
+use App\Validation\ValidationContext;
+
 abstract class ConstraintValidatorTest extends \PHPUnit\Framework\TestCase
 {
     /**

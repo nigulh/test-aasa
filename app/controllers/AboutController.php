@@ -1,4 +1,5 @@
-<?php
+<?php namespace App\Controllers;
+
 use \Psr\Container\ContainerInterface as ContainerInterface;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;

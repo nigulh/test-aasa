@@ -1,8 +1,7 @@
 <?php
 declare(strict_types=1);
 
-require __DIR__ . "/../../app/validation/ValidationContext.php";
-
+use App\Validation\ValidationContext;
 use PHPUnit\Framework\TestCase;
 
 class ValidationContextTest extends TestCase

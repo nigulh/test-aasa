@@ -1,12 +1,15 @@
-<?php
-require_once __DIR__  . "/../models/Contract.php";
-require_once __DIR__  . "/../validation/Validator.php";
-require_once __DIR__  . "/../validation/Constraints/Range.php";
+<?php namespace App\Controllers;
+
+#require_once __DIR__  . "/../models/Contract.php";
+#require_once __DIR__  . "/../validation/Validator.php";
+#require_once __DIR__  . "/../validation/Constraints/Range.php";
 
 use \Psr\Container\ContainerInterface as ContainerInterface;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
-
+use App\Models\Contract as Contract;
+use App\Validation\Validator;
+use App\Validation\Constraints\Range;
 
 class ContractController
 {

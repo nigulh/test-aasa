@@ -1,7 +1,6 @@
-<?php
-
-require_once __DIR__ . "/../ConstraintValidator.php";
-require_once __DIR__ . "/Range.php";
+<?php namespace App\Validation\Constraints;
+use App\Validation\ConstraintValidator;
+use App\Validation\Constraint;
 
 class RangeValidator extends ConstraintValidator
 {

@@ -1,6 +1,4 @@
-<?php
-require_once __DIR__ . "/ConstraintValidatorFactory.php";
-require_once __DIR__ . "/ValidationContext.php";
+<?php namespace App\Validation;
 
 class Validator {
     protected $fieldConstraints;

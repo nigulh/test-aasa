@@ -1,6 +1,4 @@
-<?php
-
-require_once __DIR__ . "/ConstraintValidatorInterface.php";
+<?php namespace App\Validation;
 
 abstract class ConstraintValidator implements ConstraintValidatorInterface
 {

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
-
-require_once __DIR__ . "/../../../app/validation/Constraints/RangeValidator.php";
+use App\Validation\Constraints\RangeValidator;
+use App\Validation\Constraints\Range;
 
 class RangeValidatorTest extends ConstraintValidatorTest
 {

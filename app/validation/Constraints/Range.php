@@ -1,6 +1,5 @@
-<?php
-
-require_once __DIR__ . "/../Constraint.php";
+<?php namespace App\Validation\Constraints;
+use App\Validation\Constraint;
 
 class Range extends Constraint
 {

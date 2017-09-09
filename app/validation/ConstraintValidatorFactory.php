@@ -1,6 +1,4 @@
-<?php
-
-require_once __DIR__ . "/Constraints/RangeValidator.php";
+<?php namespace App\Validation;
 
 class ConstraintValidatorFactory
 {

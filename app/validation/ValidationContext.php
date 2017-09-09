@@ -1,6 +1,4 @@
-<?php
-
-require_once __DIR__ . "/ValidationContextInterface.php";
+<?php namespace App\Validation;
 
 class ValidationContext implements ValidationContextInterface
 {
