@@ -12,7 +12,6 @@ $configuration = [
     ],
     'twig' => $twig,
 ];
-
 $container = new Slim\Container($configuration);
 $app = new Slim\App($container);
 

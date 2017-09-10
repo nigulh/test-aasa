@@ -11,18 +11,18 @@
 {% block content %}
 <form action="./apply" method="post">
     {% if success is defined %}
-        {% if success == false %}
-            Something went wrong.<br/>
-        {% else %}
-            Success!<br/>
-            Contract saved to {{ dataPath }}<br/>
-        {% endif %}
-        <br/>
+    {% if success == false %}
+    Something went wrong.<br/>
+    {% else %}
+    Success!<br/>
+    Contract saved to {{ dataPath }}<br/>
+    {% endif %}
+    <br/>
     {% endif %}
     {% for key, field in fields %}
-        {{field}}:<br>
-        <input type="text" name="{{key}}" value="{{ attribute(data, key) }}">
-        {{ attribute(messages, key)[0] }}<br/><br/>
+    {{field}}:<br>
+    <input type="text" name="{{key}}" value="{{ attribute(data, key) }}">
+    {{ attribute(messages, key)[0] }}<br/><br/>
     {% endfor %}
     <input type="submit" value="Submit"/>
 </form>

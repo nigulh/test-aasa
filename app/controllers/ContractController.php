@@ -13,34 +13,43 @@ class ContractController
     protected $viewTemplateName;
 
     // constructor receives container instance
-    public function __construct(ContainerInterface $container) {
+    public function __construct(ContainerInterface $container)
+    {
         $this->container = $container;
         $this->viewTemplateName = 'contract.html';
     }
 
-    public function init(Request $request, Response $response, $args) {
+    public function init(Request $request, Response $response)
+    {
         $content = $this->getContent($request);
         $response->getBody()->write($this->render($content));
 
         return $response;
     }
 
-    public function create(Request $request, Response $response, $args) {
+    public function create(Request $request, Response $response)
+    {
         $content = $this->getContent($request);
         $response->getBody()->write($this->render($content));
 
         return $response;
     }
 
-    protected function viewTemplate() {
+    /**
+     * @return Twig_TemplateWrapper
+     */
+    protected function viewTemplate()
+    {
         return $this->container->twig->load($this->viewTemplateName);
     }
 
-    protected function render($content) {
+    protected function render($content)
+    {
         return $this->viewTemplate()->render($content);
     }
 
-    protected function getFields() {
+    protected function getFields()
+    {
         return array(
             "name" => "Name",
             "identityCode" => "ID Code",
@@ -50,7 +59,8 @@ class ContractController
         );
     }
 
-    protected function getData($requestData) {
+    protected function getData($requestData)
+    {
         $contract = new Contract();
         $contract->name = "foo bar";
         $contract->identityCode = 12345678901;
@@ -76,7 +86,6 @@ class ContractController
 
     /**
      * @param Request $request
-     * @param Boolean $useValidation
      * @return array
      */
     protected function getContent(Request $request)
@@ -85,7 +94,7 @@ class ContractController
         $content["fields"] = $this->getFields();
         $data = $this->getData($request->getParsedBody());
         $content["data"] = $data;
-        $useValidation =  $request->getMethod() == "POST";
+        $useValidation = $request->getMethod() == "POST";
         if ($useValidation) {
             $content["messages"] = $messages = $this->getValidator()->validate($data);
             $success = count($messages) == 0;

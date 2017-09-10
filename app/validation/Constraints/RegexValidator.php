@@ -1,4 +1,5 @@
 <?php namespace App\Validation\Constraints;
+
 use App\Validation\ConstraintValidator;
 use App\Validation\Constraint;
 
@@ -18,7 +19,7 @@ class RegexValidator extends ConstraintValidator
             throw new \TypeError('string');
         }
 
-        $value = (string) $value;
+        $value = (string)$value;
 
         if (!preg_match($constraint->pattern, $value)) {
             $this->context->AddViolation($constraint->message);

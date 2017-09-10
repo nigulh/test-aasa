@@ -1,4 +1,5 @@
 <?php namespace App\Validation\Constraints;
+
 use App\Validation\Constraint;
 
 class Range extends Constraint
@@ -9,7 +10,8 @@ class Range extends Constraint
     public $maxMessage = 'This value should be %s or less.';
     public $invalidMessage = 'This value should be a valid number.';
 
-    public function __construct($min, $max) {
+    public function __construct($min, $max)
+    {
         if ($min == null && $max == null) {
             throw new \InvalidArgumentException(sprintf('Either option "min" or "max" must be given to constraint %s', __CLASS__));
         }

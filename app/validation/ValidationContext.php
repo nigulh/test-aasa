@@ -7,25 +7,28 @@ class ValidationContext implements ValidationContextInterface
      */
     protected $currentFieldName;
     /**
-     * @var Array
+     * @var array
      */
     protected $fieldViolations;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->fieldViolations = array();
     }
 
     /**
      * @param String $currentFieldName
      */
-    public function SetCurrentFieldName(String $currentFieldName) {
+    public function SetCurrentFieldName(String $currentFieldName)
+    {
         $this->currentFieldName = $currentFieldName;
     }
 
     /**
      * @param String $message
      */
-    public function AddViolation(String $message) {
+    public function AddViolation(String $message)
+    {
         if (!array_key_exists($this->currentFieldName, $this->fieldViolations)) {
             $this->fieldViolations[$this->currentFieldName] = array();
         }

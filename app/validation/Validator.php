@@ -1,25 +1,30 @@
 <?php namespace App\Validation;
 
-class Validator {
+class Validator
+{
     protected $fieldConstraints;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->validatorFactory = new ConstraintValidatorFactory();
         $this->fieldConstraints = $this->initialFieldConstraints();
     }
 
-    protected function initialFieldConstraints() {
+    protected function initialFieldConstraints()
+    {
         return array();
     }
 
-    public function addFieldConstraint(String $fieldName, Constraint $constraint) {
+    public function addFieldConstraint(String $fieldName, Constraint $constraint)
+    {
         if (!array_key_exists($fieldName, $this->fieldConstraints)) {
             $this->fieldConstraints[$fieldName] = array();
         }
         $this->fieldConstraints[$fieldName][] = $constraint;
     }
-    
-    public function validate($value) {
+
+    public function validate($value)
+    {
         $context = new ValidationContext();
         foreach ($this->fieldConstraints as $fieldName => $constraints) {
             foreach ($constraints as $constraint) {

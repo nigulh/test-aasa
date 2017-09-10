@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
 class NotEmptyValidatorTest extends ConstraintValidatorTest
 {
@@ -8,7 +8,8 @@ class NotEmptyValidatorTest extends ConstraintValidatorTest
         return new \App\Validation\Constraints\NotEmptyValidator();
     }
 
-    public function getEmpty() {
+    public function getEmpty()
+    {
         return array(array(""), array(null));
     }
 
@@ -23,7 +24,8 @@ class NotEmptyValidatorTest extends ConstraintValidatorTest
         $this->assertViolation($constraint->message);
     }
 
-    public function testValueIsValid() {
+    public function testValueIsValid()
+    {
         $this->validator->validate('foo', new \App\Validation\Constraints\NotEmpty());
 
         $this->assertNoViolation();

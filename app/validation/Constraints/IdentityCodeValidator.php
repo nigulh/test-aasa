@@ -1,4 +1,5 @@
 <?php namespace App\Validation\Constraints;
+
 use App\Validation\ConstraintValidator;
 use App\Validation\Constraint;
 
@@ -20,7 +21,7 @@ class IdentityCodeValidator extends ConstraintValidator
             throw new \TypeError('string');
         }
 
-        $value = (string) $value;
+        $value = (string)$value;
         $countryCode = $constraint->countryCode;
         if (array_key_exists($countryCode, $this->requiredLength)) {
             $requiredLength = $this->requiredLength[$countryCode];
@@ -35,7 +36,8 @@ class IdentityCodeValidator extends ConstraintValidator
         }
     }
 
-    public function isValidEstonianCode($value) {
+    public function isValidEstonianCode($value)
+    {
         $century = 18 + (intval(substr($value, 0, 1)) + 1) / 2;
         $year = $century * 100 + intval(substr($value, 1, 2));
         $month = intval(substr($value, 3, 2));
@@ -45,7 +47,11 @@ class IdentityCodeValidator extends ConstraintValidator
             return false;
         }
         $digits = array_map('intval', str_split($value));
-        $dotProduct = function($arr1, $arr2) { return array_sum(array_map(function($a, $b) { return $a * $b; }, $arr1, $arr2)); };
+        $dotProduct = function ($arr1, $arr2) {
+            return array_sum(array_map(function ($a, $b) {
+                return $a * $b;
+            }, $arr1, $arr2));
+        };
         $checkSum = $dotProduct(array(1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 0), $digits) % 11;
         if ($checkSum == 10) {
             $checkSum = $dotProduct(array(3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 0), $digits) % 11 % 10;

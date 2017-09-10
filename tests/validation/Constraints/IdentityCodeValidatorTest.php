@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 use \App\Validation\Constraints\IdentityCode;
 
 class IdentityCodeValidatorTest extends ConstraintValidatorTest
@@ -9,20 +9,23 @@ class IdentityCodeValidatorTest extends ConstraintValidatorTest
         return new \App\Validation\Constraints\IdentityCodeValidator();
     }
 
-    public function getWrongLength() {
+    public function getWrongLength()
+    {
         return array(
             array("ee", "123", 11)
         );
     }
 
-    public function getInvalidCodes() {
+    public function getInvalidCodes()
+    {
         return array(
             array("ee", "33333333333"),
             array("ee", "34501234214")
         );
     }
 
-    public function getValidCodes() {
+    public function getValidCodes()
+    {
         return array(
             array("ee", '34501234215')
         );
@@ -53,7 +56,8 @@ class IdentityCodeValidatorTest extends ConstraintValidatorTest
     /**
      * @dataProvider getValidCodes
      */
-    public function testValidCodes($country, $code) {
+    public function testValidCodes($country, $code)
+    {
         $this->validator->validate($code, new IdentityCode($country));
 
         $this->assertNoViolation();

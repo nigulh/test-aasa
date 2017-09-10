@@ -1,4 +1,5 @@
 <?php namespace App\Validation\Constraints;
+
 use App\Validation\ConstraintValidator;
 use App\Validation\Constraint;
 
@@ -7,7 +8,7 @@ class RangeValidator extends ConstraintValidator
     public function validate($value, Constraint $constraint)
     {
         if (!$constraint instanceof Range) {
-            throw new UnexpectedTypeException($constraint, __NAMESPACE__ . '\Range');
+            throw new \TypeError(__NAMESPACE__ . '\Range');
         }
 
         if (null === $value) {
