@@ -5,7 +5,11 @@ class Validator {
 
     public function __construct() {
         $this->validatorFactory = new ConstraintValidatorFactory();
-        $this->fieldConstraints = array();
+        $this->fieldConstraints = $this->initialFieldConstraints();
+    }
+
+    protected function initialFieldConstraints() {
+        return array();
     }
 
     public function addFieldConstraint(String $fieldName, Constraint $constraint) {

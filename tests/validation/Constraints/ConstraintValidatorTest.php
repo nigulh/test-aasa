@@ -25,7 +25,7 @@ abstract class ConstraintValidatorTest extends \PHPUnit\Framework\TestCase
         $this->assertSame(0, $violationsCount = count($this->context->getViolations()), sprintf('0 violation expected. Got %u.', $violationsCount));
     }
 
-    protected function assertValidation($message)
+    protected function assertViolation($message)
     {
         $this->assertSame(1, $violationsCount = count($this->context->getViolations()), sprintf('1 violation expected. Got %u.', $violationsCount));
         $this->assertSame($message, $gotMessage = $this->context->getViolations()[0], sprintf('Expected violation %s, got %s', $message, $gotMessage));

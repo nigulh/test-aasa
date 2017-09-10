@@ -1,15 +1,11 @@
 <?php namespace App\Controllers;
 
-#require_once __DIR__  . "/../models/Contract.php";
-#require_once __DIR__  . "/../validation/Validator.php";
-#require_once __DIR__  . "/../validation/Constraints/Range.php";
-
+use App\Models\ContractValidator;
 use \Psr\Container\ContainerInterface as ContainerInterface;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use App\Models\Contract as Contract;
 use App\Validation\Validator;
-use App\Validation\Constraints\Range;
 
 class ContractController
 {
@@ -45,7 +41,13 @@ class ContractController
     }
 
     protected function getFields() {
-        return array("name" => "Name", "identityCode" => "ID Code");
+        return array(
+            "name" => "Name",
+            "identityCode" => "ID Code",
+            "amountInCurrency" => "Amount",
+            "durationInMonths" => "Number of months",
+            "purposeOfUse" => "Purpose"
+        );
     }
 
     protected function getData($requestData) {
@@ -66,9 +68,7 @@ class ContractController
      */
     protected function getValidator()
     {
-        $validator = new Validator();
-        $validator->addFieldConstraint("identityCode", new Range(1, 1000));
-        return $validator;
+        return new ContractValidator();
     }
 
     /**

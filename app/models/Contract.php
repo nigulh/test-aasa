@@ -1,15 +1,29 @@
-<?php
-namespace App\Models;
+<?php namespace App\Models;
 
 class Contract
 {
     /**
-     * @var string
+     * @var String
      */
     public $name;
 
     /**
-     * @var int
+     * @var Integer
      */
     public $identityCode;
+
+    /**
+     * @var Float
+     */
+    public $amountInCurrency;
+
+    /**
+     * @var Integer
+     */
+    public $durationInMonths;
+
+    /**
+     * @var String
+     */
+    public $purposeCommentary;
 }

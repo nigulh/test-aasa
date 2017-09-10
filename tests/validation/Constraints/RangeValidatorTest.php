@@ -70,7 +70,7 @@ class RangeValidatorTest extends ConstraintValidatorTest
         $constraint = new Range(10, 20);
         $this->validator->validate($value, $constraint);
 
-        $this->assertValidation(sprintf($constraint->maxMessage, 20));
+        $this->assertViolation(sprintf($constraint->maxMessage, 20));
     }
 
     /**
@@ -81,7 +81,7 @@ class RangeValidatorTest extends ConstraintValidatorTest
         $constraint = new Range(10, 20);
         $this->validator->validate($value, $constraint);
 
-        $this->assertValidation(sprintf($constraint->minMessage, 10));
+        $this->assertViolation(sprintf($constraint->minMessage, 10));
     }
 
     /**
@@ -103,7 +103,7 @@ class RangeValidatorTest extends ConstraintValidatorTest
         $constraint = new Range(null, 20);
         $this->validator->validate($value, $constraint);
 
-        $this->assertValidation(sprintf($constraint->maxMessage, 20));
+        $this->assertViolation(sprintf($constraint->maxMessage, 20));
     }
 
     /**
@@ -125,6 +125,6 @@ class RangeValidatorTest extends ConstraintValidatorTest
         $constraint = new Range(10, null);
         $this->validator->validate($value, $constraint);
 
-        $this->assertValidation(sprintf($constraint->minMessage, 10));
+        $this->assertViolation(sprintf($constraint->minMessage, 10));
     }
 }
