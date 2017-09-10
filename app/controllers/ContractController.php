@@ -52,8 +52,11 @@ class ContractController
 
     protected function getData($requestData) {
         $contract = new Contract();
-        $contract->name = "foo";
-        $contract->identityCode = 123;
+        $contract->name = "foo bar";
+        $contract->identityCode = 12345678901;
+        $contract->amountInCurrency = 1234;
+        $contract->durationInMonths = 13;
+        $contract->purposeCommentary = "auto remont";
         if (is_array($requestData)) {
             foreach ($requestData as $key => $value) {
                 $contract->$key = $value;
@@ -88,7 +91,9 @@ class ContractController
             $success = count($messages) == 0;
             if ($success) {
                 $success = $this->save($data);
-                $content["dataPath"] = $this->getDataPath($data);
+                if ($success) {
+                    $content["dataPath"] = $this->getDataPath($data);
+                }
             }
             $content["success"] = $success;
         }

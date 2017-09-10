@@ -8,7 +8,7 @@ class Regex extends Constraint
 
     public function __construct($pattern) {
         if ($pattern == null) {
-            throw new InvalidArgumentException(sprintf('Parameter "pattern" must be given to constraint %s', __CLASS__));
+            throw new \InvalidArgumentException(sprintf('Parameter "pattern" must be given to constraint %s', __CLASS__));
         }
         $this->pattern = $pattern;
     }

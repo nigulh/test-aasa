@@ -1,5 +1,6 @@
 <?php namespace App\Models;
 
+use App\Validation\Constraints\IdentityCode;
 use App\Validation\Constraints\NotEmpty;
 use App\Validation\Validator;
 use App\Validation\Constraints\Range;
@@ -13,7 +14,7 @@ class ContractValidator extends Validator
         $notEmpty = new NotEmpty();
         $digitsOnly = new Regex("/^[0-9]+$/");
         $nameConstraint = new Regex("/^(([\x{00c0}-\x{01ff}a-zA-Z'\-])+ )+([\x{00c0}-\x{01ff}a-zA-Z'\-])+$/u");
-        $identityCodeConstraint = new Regex("/^\d{11}$/");
+        $identityCodeConstraint = new IdentityCode("ee");
         $purposeCommentaryConstraint = new Regex("/\b((puhkus)|(auto)|(remont)|(koduelektroonika)|(rent)|(pulmad))\b/");
         $constraints = array(
             "name" => array($notEmpty, $nameConstraint),
