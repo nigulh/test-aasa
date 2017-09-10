@@ -46,7 +46,7 @@ class ContractController
             "identityCode" => "ID Code",
             "amountInCurrency" => "Amount",
             "durationInMonths" => "Number of months",
-            "purposeOfUse" => "Purpose"
+            "purposeCommentary" => "Purpose"
         );
     }
 

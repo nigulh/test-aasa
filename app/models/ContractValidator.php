@@ -14,13 +14,13 @@ class ContractValidator extends Validator
         $digitsOnly = new Regex("/^[0-9]+$/");
         $nameConstraint = new Regex("/^(([\x{00c0}-\x{01ff}a-zA-Z'\-])+ )+([\x{00c0}-\x{01ff}a-zA-Z'\-])+$/u");
         $identityCodeConstraint = new Regex("/^\d{11}$/");
-        $purposeOfUseConstraint = new Regex("/\b((puhkus)|(auto)|(remont)|(koduelektroonika)|(rent)|(pulmad))\b/");
+        $purposeCommentaryConstraint = new Regex("/\b((puhkus)|(auto)|(remont)|(koduelektroonika)|(rent)|(pulmad))\b/");
         $constraints = array(
             "name" => array($notEmpty, $nameConstraint),
             "identityCode" => array($notEmpty, $identityCodeConstraint),
             "amountInCurrency" => array($notEmpty, $digitsOnly, new Range(1000, 10000)),
             "durationInMonths" => array($notEmpty, $digitsOnly, new Range(6, 24)),
-            "purposeOfUse" => array($notEmpty, $purposeOfUseConstraint)
+            "purposeCommentary" => array($notEmpty, $purposeCommentaryConstraint)
         );
         return $constraints;
     }
