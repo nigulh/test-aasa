@@ -10,11 +10,12 @@
 
 {% block content %}
 <form action="./apply" method="post">
-    {% if fail is defined %}
-        {% if fail == true %}
+    {% if success is defined %}
+        {% if success == false %}
             Something went wrong.<br/>
         {% else %}
             Success!<br/>
+            Contract saved to {{ dataPath }}<br/>
         {% endif %}
         <br/>
     {% endif %}

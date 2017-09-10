@@ -85,9 +85,44 @@ class ContractController
         $useValidation =  $request->getMethod() == "POST";
         if ($useValidation) {
             $content["messages"] = $messages = $this->getValidator()->validate($data);
-            $content["fail"] = count($messages) > 0;
+            $success = count($messages) == 0;
+            if ($success) {
+                $success = $this->save($data);
+                $content["dataPath"] = $this->getDataPath($data);
+            }
+            $content["success"] = $success;
         }
         return $content;
+    }
+
+
+    protected function save($data)
+    {
+        $dataPath = $this->getDataPath($data);
+        $file = fopen($dataPath, "w");
+        if (!$file) {
+            return false;
+        }
+        fwrite($file, json_encode($data));
+        fclose($file);
+        return true;
+    }
+
+    /**
+     * @param $data
+     * @return string
+     */
+    protected function getDataPath($data)
+    {
+        $id = spl_object_hash($data);
+        $path = dirname(dirname(__DIR__)) . "/data/contracts";
+        if (!file_exists($path)) {
+            if (!mkdir($path, 0755, true)) {
+                return false;
+            }
+        }
+        $dataPath = $path . "/" . $id . ".txt";
+        return $dataPath;
     }
 }
 
